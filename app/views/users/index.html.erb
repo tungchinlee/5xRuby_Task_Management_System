@@ -1,0 +1,20 @@
+<%= link_to "新增使用者", new_user_path %>
+<%= link_to "登出", logout_path, method: :delete %>
+
+<table>
+  <thead>
+    <tr>
+      <td>名稱</td>
+      <td>順序</td>
+      <td>狀態</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user_path(user) %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
