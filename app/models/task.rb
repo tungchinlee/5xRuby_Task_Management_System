@@ -6,4 +6,14 @@ class Task < ApplicationRecord
   validates :end_at, presence: true
   validates :status, presence: true
   validates :priority, presence: true
+  enum status:{
+    pending: 0,
+    working: 1,
+    finished: 2
+  }
+
+  enum priority:{
+    low: 0,
+    high: 1
+  }
 end
