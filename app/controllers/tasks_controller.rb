@@ -33,6 +33,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
+    redirect_to root_path, alert: "刪除成功"
   end
 
   private
