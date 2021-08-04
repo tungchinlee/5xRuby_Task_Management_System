@@ -1,12 +1,12 @@
-<%= link_to "新增任務", new_task_path %>
-<%= link_to "登出", logout_path, method: :delete %>
+<%= link_to "#{t("new")}#{Task.model_name.human}", new_task_path %>
+<%= link_to "#{t("logout")}", logout_path, method: :delete %>
 
 <table>
   <thead>
     <tr>
-      <td>名稱</td>
-      <td>順序</td>
-      <td>狀態</td>
+      <td><%= Task.human_attribute_name("name")%></td>
+      <td><%= Task.human_attribute_name("priority")%></td>
+      <td><%= Task.human_attribute_name("status")%></td>
     </tr>
   </thead>
   <tbody>
