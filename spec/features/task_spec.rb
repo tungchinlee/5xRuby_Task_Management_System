@@ -7,7 +7,7 @@ RSpec.describe "Tasks", type: :feature do
   describe "首頁登入" do 
     it "要求登入" do 
       visit tasks_path
-      expect(page).to have_content("Password")
+      expect(page).to have_content("#{User.human_attribute_name("password")}")
     end
   end
 
