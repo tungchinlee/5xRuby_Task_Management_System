@@ -1,0 +1,13 @@
+zh-TW:
+  activerecord:
+    models:
+      task: "任務"
+    attributes:
+      task:
+        name: "名稱"
+        content: "內容"
+        start_at: "開始時間"
+        end_at: "結束時間"
+        priority: "順序"
+        status: "狀態"
+        created_at: "建立時間"

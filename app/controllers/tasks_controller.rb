@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   def create
     @task = @current_user.tasks.new(task_params)
     if @task.save
-      redirect_to root_path, alert: "新增成功"
+      redirect_to root_path, alert: "#{t("new")}#{t("success")}"
     else
       render :new
     end
@@ -22,7 +22,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to root_path, alert: "更新成功"
+      redirect_to root_path, alert: "#{t("update")}#{t("success")}"
     else
       render :edit
     end
@@ -33,7 +33,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to root_path, alert: "刪除成功"
+    redirect_to root_path, alert: "#{t("destroy")}#{t("success")}"
   end
 
   private
@@ -54,6 +54,6 @@ class TasksController < ApplicationController
   end
 
   def authenticate_user
-    redirect_to login_path, alert: "請登入" if !user_signed_in?
+    redirect_to login_path, alert: "#{t("login")}" if !user_signed_in?
   end
 end

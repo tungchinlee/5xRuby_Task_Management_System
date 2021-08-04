@@ -19,7 +19,7 @@ RSpec.describe "Tasks", type: :feature do
       fill_in "user_password", with: @user.password
 
       click_button "登入"
-      expect(page).to have_content("登入成功")
+      expect(page).to have_content("#{I18n.t("login")}#{I18n.t("success")}")
     end
     it "失敗" do
       visit root_path

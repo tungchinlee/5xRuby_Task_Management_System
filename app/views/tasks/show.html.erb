@@ -1,21 +1,27 @@
-<%= link_to "修改", edit_task_path(@task) %>
-<%= link_to "刪除", task_path(@task), method: :delete%>
-<%= link_to "返回", :back %>
+<%= link_to "#{t("edit")}", edit_task_path(@task) %>
+<%= link_to "#{t("destroy")}", task_path(@task), method: :delete%>
+<%= link_to "#{t("back")}", :back %>
 <div class="col-2">
-  <p>name:<%= @task.name %></p>
+  <p><%= Task.human_attribute_name("name") %></p>
+  <p><%= @task.name %></p>
 </div>
 <div class="col-2">
-  <p>start_at:<%= @task.start_at %></p>
+  <p><%= Task.human_attribute_name("start_at") %></p>
+  <p><%= @task.start_at %></p>
 </div>
 <div class="col-2">
-  <p>end_at:<%= @task.end_at %></p>
+  <p><%= Task.human_attribute_name("end_at") %></p>
+  <p><%= @task.end_at %></p>
 </div>
 <div class="col-4">
-  <p>content:<%= @task.content %></p>
+  <p><%= Task.human_attribute_name("content") %></p>
+  <p><%= @task.content %></p>
 </div>
 <div class="col-1">
-  <p>priority:<%= @task.priority %></p>
+  <p><%= Task.human_attribute_name("priority") %></p>
+  <p><%= @task.priority %></p>
 </div>
 <div class="col-1">
-  <p>status:<%= @task.status %></p>
+  <p><%= Task.human_attribute_name("status") %></p>
+  <p><%= @task.status %></p>
 </div>
