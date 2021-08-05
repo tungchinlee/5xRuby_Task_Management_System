@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :set_task, except: :index
 
   def index
-    @tasks = @current_user.tasks.all
+    @tasks = @current_user.tasks.order_start_at
   end
 
   def new; end
