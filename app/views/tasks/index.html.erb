@@ -4,9 +4,11 @@
 <table>
   <thead>
     <tr>
-      <td><%= Task.human_attribute_name("name")%></td>
-      <td><%= Task.human_attribute_name("priority")%></td>
-      <td><%= Task.human_attribute_name("status")%></td>
+      <td><%= Task.human_attribute_name("name") %></td>
+      <td><%= Task.human_attribute_name("priority") %></td>
+      <td><%= Task.human_attribute_name("status") %></td>
+      <td><%= Task.human_attribute_name("start_at") %></td>
+      <td><%= Task.human_attribute_name("end_at") %></td>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +17,8 @@
         <td><%= link_to task.name, task_path(task) %></td>
         <td><%= task.priority %></td>
         <td><%= task.status %></td>
+        <td><%= task.start_at.strftime("%F %T") %></td>
+        <td><%= task.end_at.strftime("%F %T") %></td>
       </tr>
     <% end %>
   </tbody>
