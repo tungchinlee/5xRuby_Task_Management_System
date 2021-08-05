@@ -19,7 +19,6 @@ module TMS5xruby
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     #FactoryBot
-    config.factory_bot.definition_file_paths = ["spec/factories"]
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.default_locale = "zh-TW"
     config.time_zone = "Taipei"
