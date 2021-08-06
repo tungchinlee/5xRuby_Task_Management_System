@@ -4,7 +4,8 @@ class TasksController < ApplicationController
   before_action :set_task, except: :index
 
   def index
-    @tasks = @current_user.tasks.order_start_at
+    @q = current_user.tasks.ransack(params[:q])
+    @tasks = @q.result
   end
 
   def new; end

@@ -1,24 +1,32 @@
-# README
+## 版本
+- ruby: 2.7.0
+- rails: 6.1.4
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 部署至heroku
 
-Things you may want to cover:
+- 登入
 
-* Ruby version
+```bash
+    heroku login
+```
 
-* System dependencies
+- 準備
 
-* Configuration
+```bash
+    heroku create tms-5xruby
+```
 
-* Database creation
+- 新增remote heroku節點
 
-* Database initialization
+```bash
+    git remote add heroku https://git.heroku.com/tms-5xruby.git
+```
 
-* How to run the test suite
+- 部署
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+    git push heroku main
 
-* Deployment instructions
-
-* ...
+    #migration有變動時
+    heroku run rails db:migrate
+```
