@@ -109,6 +109,50 @@ RSpec.describe "Tasks", type: :feature do
         tasks = @user.tasks.order_start_at
         expect(tasks).to eq([@task3, @task2, @task1])
       end
+
+      it "結束日期" do
+        @task1 = @user.tasks.create(params)
+        @task2 = @user.tasks.create(params.merge(end_at: Time.zone.now+1.day))
+        @task3 = @user.tasks.create(params.merge(end_at: Time.zone.now+2.days))
+        visit tasks_path
+        tasks = @user.tasks.order(end_at: :desc)
+        expect(tasks).to eq([@task3, @task2, @task1])
+      end
+    end
+
+    describe "查詢" do 
+      let(:params) {
+        {
+          name: "task",
+          start_at: Time.zone.now,
+          end_at: Time.zone.now+1.day,
+          priority: :high,
+          status: :pending
+        }
+      }
+      before(:each) do 
+        @task1 = @user.tasks.create(params.merge(name: "Ruby", priority: :middle))
+        @task2 = @user.tasks.create(params.merge(name: "on", status: :working))
+        @task3 = @user.tasks.create(params.merge(name: "Rails", status: :finished))
+      end
+      it "名稱" do 
+        visit tasks_path
+        tasks = @user.tasks.ransack(name_cont: "Ruby").result
+        
+        expect(tasks).to eq([@task1])
+      end
+      it "狀態" do 
+        visit tasks_path
+        tasks = @user.tasks.ransack({status_eq: 2}).result
+        
+        expect(tasks).to eq([@task3])
+      end
+      it "優先順序" do 
+        visit tasks_path
+        tasks = @user.tasks.ransack({priority_eq: 1}).result
+        
+        expect(tasks).to eq([@task1])
+      end
     end
   end  
 end
