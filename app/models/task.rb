@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  paginates_per 3
   include AASM
   belongs_to :user
   validates :name, presence: true

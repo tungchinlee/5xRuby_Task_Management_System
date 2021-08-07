@@ -1,38 +1,52 @@
-<%= link_to "#{t("new")}#{Task.model_name.human}", new_task_path %>
-<%= link_to "#{t("logout")}", logout_path, method: :delete %>
-
-<%= search_form_for @q do |f| %>
-  <%= f.label :name_cont %>
-  <%= f.search_field :name_cont, class: "form-control"  %>
-  <%= f.submit %>
-<% end %>
-<table>
-  <thead>
-    <tr>
-      <td><%= Task.human_attribute_name("name") %></td>
-      <td>
-        <%= sort_link(@q, :priority, Task.human_attribute_name("priority"), default_order: :desc) %>
-      </td>
-      <td>
-        <%= sort_link(@q, :status, Task.human_attribute_name("status"), default_order: :desc) %>
-      </td>
-      <td>
-        <%= sort_link(@q, :start_at, Task.human_attribute_name("start_at"), default_order: :desc) %>
-      </td>
-      <td>
-        <%= sort_link(@q, :end_at, Task.human_attribute_name("end_at"), default_order: :desc) %>
-      </td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= link_to task.name, task_path(task) %></td>
-        <td><%= task.priority %></td>
-        <td><%= task.status %></td>
-        <td><%= task.start_at.strftime("%F %T") %></td>
-        <td><%= task.end_at.strftime("%F %T") %></td>
-      </tr>
+<div class="row mx-md-n5">
+  <div class="d-flex p-2 bd-highlight">
+    <div>
+      <%= button_to "#{t("new")}#{Task.model_name.human}", new_task_path, method: :get %>
+    </div>
+    <div>
+      <%= button_to "#{t("logout")}", logout_path, method: :delete %>
+    </div>
+  </div>
+  <div>
+    <%= search_form_for @q do |f| %>
+      <%= f.label :name_cont %>
+      <%= f.search_field :name_cont, class: "form-control"  %>
+      <%= f.submit %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div>
+    <%= paginate @tasks, left: 2, right: 2  %>
+  </div>
+  <div class="row mx-md-n5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= Task.human_attribute_name("name") %></th>
+          <th>
+            <%= sort_link(@q, :priority, Task.human_attribute_name("priority"), default_order: :desc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :status, Task.human_attribute_name("status"), default_order: :desc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :start_at, Task.human_attribute_name("start_at"), default_order: :desc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :end_at, Task.human_attribute_name("end_at"), default_order: :desc) %>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tasks.each do |task| %>
+          <tr>
+            <th scope="row"><%= link_to task.name, task_path(task) %></th>
+            <td><%= task.priority %></td>
+            <td><%= task.status %></td>
+            <td><%= task.start_at.strftime("%F %T") %></td>
+            <td><%= task.end_at.strftime("%F %T") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

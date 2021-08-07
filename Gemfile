@@ -27,8 +27,12 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+# Use AASM for Tasks status
 gem 'aasm', '~> 5.2'
+# Use Ransack for search
 gem 'ransack', '~> 2.4', '>= 2.4.2'
+# Use Kaminari for pagination
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
