@@ -1,11 +1,16 @@
 <%= link_to "#{t("new")}#{Task.model_name.human}", new_task_path %>
 <%= link_to "#{t("logout")}", logout_path, method: :delete %>
 
-<%= search_form_for @q do |f| %>
-  <%= f.label :name_cont %>
-  <%= f.search_field :name_cont, class: "form-control"  %>
-  <%= f.submit %>
-<% end %>
+<div>
+  <%= search_form_for @q do |f| %>
+    <%= f.label :name_cont %>
+    <%= f.search_field :name_cont, class: "form-control"  %>
+    <%= f.submit %>
+  <% end %>
+</div>
+<div>
+  <%= paginate @tasks, left: 2, right: 2  %>
+</div>
 <table>
   <thead>
     <tr>
