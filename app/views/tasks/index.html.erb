@@ -1,5 +1,10 @@
-<%= link_to "#{t("new")}#{Task.model_name.human}", new_task_path %>
-<%= link_to "#{t("logout")}", logout_path, method: :delete %>
+
+<div>
+  <%= button_to "#{t("new")}#{Task.model_name.human}", new_task_path %>
+</div>
+<div>
+  <%= button_to "#{t("logout")}", logout_path, method: :delete %>
+</div>
 
 <div>
   <%= search_form_for @q do |f| %>
