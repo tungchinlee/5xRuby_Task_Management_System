@@ -1,4 +1,57 @@
-<div class="col-1">
+<div>
+  <%= form_with model: @task do |f| %>
+    <div class="col-3">
+        <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <%= f.label :start_at %>
+            <%= f.datetime_field :start_at %>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <%= f.label :end_at %>
+            <%= f.datetime_field :end_at %>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <%= f.label :content %>
+            <%= f.text_area :content %>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <%= f.label :priority %>
+            <%= f.select :priority, Task.priorities.keys %>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <%= f.label :status %>
+            <%= f.select :status, Task.statuses.keys %>
+        </div>
+    </div>
+    <div class="d-flex flex-row bd-highlight mb-3">
+        <div class="col-1 m-1">
+            <div class="form-group">
+                <%= f.button "#{t("confirm")}", class: "btn btn-success btn-sm form-control" %>
+            </div>
+        </div>
+        <div class="col-1 m-1">
+            <div class="form-group">
+                <%= link_to "#{t("back")}", :back, class: "btn btn-success btn-sm form-control"  %>
+            </div>
+        </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="col-3">
   <% if @task.errors.any? %>
     <ul>
       <% @task.errors.full_messages.each do |message| %>
@@ -7,46 +60,3 @@
     </ul>
   <% end %>
 </div>
-<%= form_with model: @task do |f| %>
-  <div class="col-3">
-      <div class="form-group">
-          <%= f.label :name %>
-          <%= f.text_field :name %>
-      </div>
-  </div>
-  <div class="col-3">
-      <div class="form-group">
-          <%= f.label :start_at %>
-          <%= f.datetime_field :start_at %>
-      </div>
-  </div>
-  <div class="col-3">
-      <div class="form-group">
-          <%= f.label :end_at %>
-          <%= f.datetime_field :end_at %>
-      </div>
-  </div>
-  <div class="col-3">
-      <div class="form-group">
-          <%= f.label :content %>
-          <%= f.text_area :content %>
-      </div>
-  </div>
-  <div class="col-3">
-      <div class="form-group">
-          <%= f.label :priority %>
-          <%= f.select :priority, Task.priorities.keys %>
-      </div>
-  </div>
-  <div class="col-3">
-      <div class="form-group">
-          <%= f.label :status %>
-          <%= f.select :status, Task.statuses.keys %>
-      </div>
-  </div>
-  <div class="col-1">
-      <div class="form-group">
-          <%= f.button "#{t("confirm")}", class: "btn btn-success btn-sm form-control" %>
-      </div>
-  </div>
-<% end %>

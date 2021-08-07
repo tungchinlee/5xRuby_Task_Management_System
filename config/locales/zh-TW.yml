@@ -19,3 +19,11 @@ zh-TW:
   admin: "管理"
   account: "帳號"
   error: "錯誤"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: '錯誤訊息: %{errors}'
+  errors:
+    format: '%{attribute}%{message}'
+    messages:
+      blank: '空白'
