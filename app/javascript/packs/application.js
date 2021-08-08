@@ -13,7 +13,7 @@ Turbolinks.start()
 ActiveStorage.start()
 
 require("bootstrap")
-import "../stylesheets/application";
+import "./stylesheets/application";
 document.addEventListener("turbolinks:load", function() {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
