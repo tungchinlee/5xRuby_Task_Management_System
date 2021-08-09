@@ -8,7 +8,8 @@ class Task < ApplicationRecord
   validates :end_at, presence: true
   validates :status, presence: true
   validates :priority, presence: true
-  
+  validate :end_at_is_after_start_at
+
   enum status:{
     pending: 0,
     working: 1,
@@ -45,4 +46,13 @@ class Task < ApplicationRecord
       Tag.where(name: item.strip).first_or_create!
     end
   end
+
+  def end_at_is_after_start_at
+    return if end_at.blank? || start_at.blank?
+  
+    if end_at < start_at
+      errors.add(:end_at, "請設定在開始時間之後") 
+    end 
+  end
+    
 end
