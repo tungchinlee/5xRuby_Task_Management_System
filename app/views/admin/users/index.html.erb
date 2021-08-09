@@ -1,5 +1,6 @@
-<%= link_to "新增使用者", new_admin_user_path %>
-<%= link_to "登出", logout_path, method: :delete %>
+<%= link_to "#{t("new")}#{User.model_name.human}", new_admin_user_path %>
+<%= link_to "#{t("logout")}", logout_path, method: :delete %>
+<%= link_to "#{t("back")}", root_path %>
 
 <table>
   <thead>
