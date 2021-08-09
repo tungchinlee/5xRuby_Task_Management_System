@@ -1,0 +1,51 @@
+<div class="col-1">
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+<%= form_with scope: :user, url: url, method: method do |f| %>
+  <div class="col-3">
+      <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+      </div>
+  </div>
+  <div class="col-3">
+      <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+      </div>
+  </div>
+  <div class="col-3">
+      <div class="form-group">
+          <%= f.label :password %>
+          <%= f.text_field :password %>
+      </div>
+  </div>
+  <div class="col-3">
+      <div class="form-group">
+          <%= f.label :password_confirmation %>
+          <%= f.text_field :password_confirmation %>
+      </div>
+  </div>
+  <div class="col-3">
+      <div class="form-group">
+          <%= f.label :role %>
+          <%= f.select :role, User.roles.keys %>
+      </div>
+  </div>
+  <div class="col-1">
+      <div class="form-group">
+          <%= f.button "#{t("confirm")}", class: "btn btn-success btn-sm form-control" %>
+      </div>
+  </div>
+  <div class="col-1">
+      <div class="form-group">
+          <%= link_to "#{t("back")}", :back, class: "btn btn-success btn-sm form-control" %>
+      </div>
+  </div>
+<% end %>

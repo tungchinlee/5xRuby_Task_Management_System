@@ -19,6 +19,7 @@ zh-TW:
   admin: "管理"
   account: "帳號"
   error: "錯誤"
+  count: 
   activerecord:
     errors:
       messages:
@@ -27,3 +28,5 @@ zh-TW:
     format: '%{attribute}%{message}'
     messages:
       blank: '空白'
+      confirmation: '確認'
+      taken: '已使用'

@@ -8,3 +8,4 @@ zh-TW:
         email: "Email"
         password: "密碼"
         password_confirmation: "確認密碼"
+        tasks_count: "任務數"

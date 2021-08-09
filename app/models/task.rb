@@ -1,7 +1,8 @@
 class Task < ApplicationRecord
   paginates_per 3
   include AASM
-  belongs_to :user
+  belongs_to :user, counter_cache: true
+  has_and_belongs_to_many :tags
   validates :name, presence: true
   validates :start_at, presence: true
   validates :end_at, presence: true
@@ -32,6 +33,16 @@ class Task < ApplicationRecord
 
     event :finished do
       transitions from: [:pending, :working], to: :finished
+    end
+  end
+
+  def self.tagged_with(name)
+    Tag.find_by!(name: name).tasks
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(',').map do |item|
+      Tag.where(name: item.strip).first_or_create!
     end
   end
 end

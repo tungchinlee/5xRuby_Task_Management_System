@@ -1,0 +1,22 @@
+<%= link_to "新增使用者", new_admin_user_path %>
+<%= link_to "登出", logout_path, method: :delete %>
+
+<table>
+  <thead>
+    <tr>
+      <td><%= User.model_name.human %></td>
+      <td><%= User.human_attribute_name("email") %></td>
+      <td><%= User.human_attribute_name("tasks_count") %></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, admin_user_path(user) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.tasks.size %></td>
+        <td><%= link_to t("destroy"), admin_user_path(user), method: :delete%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

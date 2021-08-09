@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :set_task, except: :index
 
   def index
-    @q = current_user.tasks.ransack(params[:q])
+    @q = current_user.tasks.includes(:tags).ransack(params[:q])
     @tasks = @q.result.page(params[:page])
   end
 
@@ -46,7 +46,8 @@ class TasksController < ApplicationController
       :end_at,
       :content,
       :priority,
-      :status
+      :status,
+      :tag_list
     )
   end
 
@@ -56,5 +57,9 @@ class TasksController < ApplicationController
 
   def authenticate_user
     redirect_to login_path, alert: "#{t("login")}" if !user_signed_in?
+  end
+
+  def tag_list
+    tags.map(&:name).join(', ')
   end
 end

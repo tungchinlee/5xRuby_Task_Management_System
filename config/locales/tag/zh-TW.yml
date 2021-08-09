@@ -1,0 +1,7 @@
+zh-TW:
+  activerecord:
+    models:
+      tag: "標籤"
+    attributes:
+      tag:
+        name: "名稱"

@@ -6,4 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: "first_user", email: "first@gmail.com", password: "qwerqwer")
+if User.admin.none?
+  user = User.create(
+    name: "first_user", 
+    email: "first@gmail.com", 
+    password: "qwerqwer",
+    role: :admin
+  )
+end
+
+Task.where(user_id: nil).each do |task|
+  task.update(user: user)
+end
