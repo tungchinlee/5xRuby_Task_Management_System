@@ -36,6 +36,12 @@
             <%= f.select :status, Task.statuses.keys %>
         </div>
     </div>
+    <div class="col-3">
+        <div class="form-group">
+            <%= f.label :tag_list %>
+            <%= f.text_field :tag_list %>
+        </div>
+    </div>
     <div class="d-flex flex-row bd-highlight mb-3">
         <div class="col-1 m-1">
             <div class="form-group">
